@@ -1,11 +1,13 @@
 # frozen_string_literal: true
 
-require_relative 'display_helpers/formatter'
-require_relative 'display_helpers/collection_display_string'
 require_relative 'display_helpers/array_display_string'
+require_relative 'display_helpers/collection_display_string'
+require_relative 'display_helpers/columnizer'
+require_relative 'display_helpers/formattable'
+require_relative 'display_helpers/formatter'
 require_relative 'display_helpers/hash_display_string'
 require_relative 'display_helpers/object_display_string'
-require_relative 'display_helpers/formattable'
+require_relative 'display_helpers/soft_wrapper'
 require_relative 'display_helpers/writable'
 
 module ReactiveConsole
