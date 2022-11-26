@@ -1,4 +1,4 @@
-module ConsoleHelpers
+module ReactiveConsole
   module ObjectDisplayString
     HANDLERS = {
       Numeric => ->(num) { num.round(5) },

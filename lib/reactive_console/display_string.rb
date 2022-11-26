@@ -8,7 +8,7 @@ require_relative 'display_helpers/object_display_string'
 require_relative 'display_helpers/formattable'
 require_relative 'display_helpers/writable'
 
-module ConsoleHelpers
+module ReactiveConsole
   class DisplayString
     include Formattable
     include Writable
@@ -45,12 +45,12 @@ module ConsoleHelpers
 
     module ObjectExt
       def console_helpers_as_display_string(format = nil)
-        puts ConsoleHelpers::DisplayString.new(self).output(*format)
+        puts ReactiveConsole::DisplayString.new(self).output(*format)
       end
       alias_method :chads, :console_helpers_as_display_string
     end
   end
 end
 
-Object.include(ConsoleHelpers::DisplayString::ObjectExt)
-Object.extend(ConsoleHelpers::DisplayString::ObjectExt)
+Object.include(ReactiveConsole::DisplayString::ObjectExt)
+Object.extend(ReactiveConsole::DisplayString::ObjectExt)

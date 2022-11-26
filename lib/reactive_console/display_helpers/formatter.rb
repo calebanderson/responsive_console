@@ -1,6 +1,6 @@
 require_relative 'writable'
 
-module ConsoleHelpers
+module ReactiveConsole
   class Formatter
     include Writable
 

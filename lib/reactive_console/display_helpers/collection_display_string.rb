@@ -1,6 +1,6 @@
 require_relative 'formattable'
 
-module ConsoleHelpers
+module ReactiveConsole
   module CollectionDisplayString
     def input
       element_map { |e| child_string(e) }
