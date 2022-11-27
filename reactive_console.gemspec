@@ -16,7 +16,7 @@ Gem::Specification.new do |spec|
 
   spec.metadata['homepage_uri'] = spec.homepage
   spec.metadata['source_code_uri'] = 'https://github.com/calebanderson/reactive_console'
-  spec.metadata['changelog_uri'] = 'https://github.com/calebanderson/reactive_console/CHANGELOG.md'
+  spec.metadata['changelog_uri'] = 'https://github.com/calebanderson/reactive_console/blob/master/CHANGELOG.md'
 
   spec.files = Dir['{app,config,db,lib}/**/*', 'MIT-LICENSE', 'Rakefile', 'README.md']
 
