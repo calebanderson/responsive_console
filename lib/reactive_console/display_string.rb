@@ -10,7 +10,7 @@ require_relative 'display_helpers/object_display_string'
 require_relative 'display_helpers/soft_wrapper'
 require_relative 'display_helpers/writable'
 
-module ReactiveConsole
+module ResponsiveConsole
   class DisplayString
     include Formattable
     include Writable
@@ -47,12 +47,12 @@ module ReactiveConsole
 
     module ObjectExt
       def console_helpers_as_display_string(format = nil)
-        puts ReactiveConsole::DisplayString.new(self).output(*format)
+        puts ResponsiveConsole::DisplayString.new(self).output(*format)
       end
       alias_method :chads, :console_helpers_as_display_string
     end
   end
 end
 
-Object.include(ReactiveConsole::DisplayString::ObjectExt)
-Object.extend(ReactiveConsole::DisplayString::ObjectExt)
+Object.include(ResponsiveConsole::DisplayString::ObjectExt)
+Object.extend(ResponsiveConsole::DisplayString::ObjectExt)

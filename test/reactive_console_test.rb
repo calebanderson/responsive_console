@@ -1,7 +1,7 @@
 require "test_helper"
 
-class ReactiveConsoleTest < ActiveSupport::TestCase
+class ResponsiveConsoleTest < ActiveSupport::TestCase
   test "it has a version number" do
-    assert ReactiveConsole::VERSION
+    assert ResponsiveConsole::VERSION
   end
 end

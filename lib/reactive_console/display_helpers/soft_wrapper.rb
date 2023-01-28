@@ -1,4 +1,4 @@
-module ReactiveConsole
+module ResponsiveConsole
   class SoftWrapper
     attr_reader :string, :display_string
     delegate :temp_joiner, :joiner, :remaining_width, to: :display_string

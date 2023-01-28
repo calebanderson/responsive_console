@@ -1,6 +1,6 @@
 require_relative 'collection_display_string'
 
-module ReactiveConsole
+module ResponsiveConsole
   module HashDisplayString
     include CollectionDisplayString
 

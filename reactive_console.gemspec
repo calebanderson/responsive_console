@@ -1,11 +1,11 @@
-require_relative 'lib/reactive_console/version'
+require_relative 'lib/responsive_console/version'
 
 Gem::Specification.new do |spec|
-  spec.name        = 'reactive_console'
-  spec.version     = ReactiveConsole::VERSION
+  spec.name        = 'responsive_console'
+  spec.version     = ResponsiveConsole::VERSION
   spec.authors     = ['calebanderson']
   spec.email       = ['caleb.r.anderson.1@gmail.com']
-  spec.homepage    = 'https://github.com/calebanderson/reactive_console'
+  spec.homepage    = 'https://github.com/calebanderson/responsive_console'
   spec.summary     = 'Formatters for displaying large objects in the console at any set width'
   spec.description = 'Formatters for displaying large objects in the console at any set width'
   spec.license     = 'MIT'
@@ -15,8 +15,8 @@ Gem::Specification.new do |spec|
   spec.metadata['allowed_push_host'] = 'TODO: Set to http://mygemserver.com'
 
   spec.metadata['homepage_uri'] = spec.homepage
-  spec.metadata['source_code_uri'] = 'https://github.com/calebanderson/reactive_console'
-  spec.metadata['changelog_uri'] = 'https://github.com/calebanderson/reactive_console/blob/master/CHANGELOG.md'
+  spec.metadata['source_code_uri'] = 'https://github.com/calebanderson/responsive_console'
+  spec.metadata['changelog_uri'] = 'https://github.com/calebanderson/responsive_console/blob/master/CHANGELOG.md'
 
   spec.files = Dir['{app,config,db,lib}/**/*', 'MIT-LICENSE', 'Rakefile', 'README.md']
 

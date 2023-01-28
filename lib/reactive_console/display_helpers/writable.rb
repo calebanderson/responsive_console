@@ -1,4 +1,4 @@
-module ReactiveConsole
+module ResponsiveConsole
   module Writable
     WRITER_KEY = :display_output_writer
     CURSOR_KEY = :display_output_cursor
@@ -36,7 +36,7 @@ module ReactiveConsole
     end
 
     def remaining_width
-      ReactiveConsole.width - global_cursor_position
+      ResponsiveConsole.width - global_cursor_position
     end
 
     def cursor_indent

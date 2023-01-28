@@ -1,4 +1,4 @@
-module ReactiveConsole
+module ResponsiveConsole
   class Columnizer
     MAX_COLUMNS = 7
     MIN_ELEMENTS = 3

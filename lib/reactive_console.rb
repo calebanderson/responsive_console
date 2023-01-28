@@ -1,8 +1,8 @@
-require "reactive_console/display_string"
-require "reactive_console/version"
-require "reactive_console/railtie"
+require "responsive_console/display_string"
+require "responsive_console/version"
+require "responsive_console/railtie"
 
-module ReactiveConsole
+module ResponsiveConsole
   class << self
     CONSOLE_WIDTH_RANGE = (80..800).freeze
     DEFAULT_CONSOLE_WIDTH = 250

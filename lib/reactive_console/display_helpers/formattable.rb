@@ -1,4 +1,4 @@
-module ReactiveConsole
+module ResponsiveConsole
   module Formattable
     def self.included(base)
       base.extend(ClassMethods)
