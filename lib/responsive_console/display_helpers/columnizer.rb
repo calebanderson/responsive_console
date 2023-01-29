@@ -39,7 +39,7 @@ module ResponsiveConsole
       @column_count ||= max_columns.downto(1).find do |cols|
         formatted = format(formats_by_col[cols], *Array.new(cols, ''))
         formatted.size <= remaining_width
-      end
+      end || 1
     end
 
     def formats_by_col
@@ -50,7 +50,8 @@ module ResponsiveConsole
     end
 
     def one_column_format
-      "%-#{remaining_width}.#{remaining_width}s"
+      width = [remaining_width, 0].max
+      "%-#{width}.#{width}s"
     end
   end
 end
