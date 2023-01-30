@@ -32,11 +32,5 @@ module ResponsiveConsole
     def temp_joiner
       singleton_class::TEMPORARY_JOINER
     end
-
-    # Collections display elements so shouldn't be inspected themselves
-    def inspect
-      output
-    end
-    alias_method :to_s, :inspect
   end
 end
