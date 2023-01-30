@@ -1,16 +1,15 @@
 module ResponsiveConsole
   class SoftWrapper
     attr_reader :string, :display_string
-    delegate :temp_joiner, :joiner, :remaining_width, :log_string, to: :display_string
+    delegate :temp_joiner, :joiner, :remaining_width, to: :display_string
 
     def initialize(str, display_string, **_options)
       @display_string = display_string
       @string = str.dup
-      log_string { str }
     end
 
     def output
-      rows.map { |r| r.join(joiner) }.join(line_joiner).tap { |o| log_string { o } }
+      rows.map { |r| r.join(joiner) }.join(line_joiner)
     end
 
     def line_joiner
