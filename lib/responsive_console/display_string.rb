@@ -45,6 +45,12 @@ module ResponsiveConsole
       @raw_input = input
     end
 
+    def log_string(label = nil, &block)
+      puts "===== #{label} =====" if label
+      SharedHelpers.print_file_link(block.source_location)
+      puts [block.call, nil]
+    end
+
     module ObjectExt
       def console_helpers_as_display_string(format = nil)
         puts ResponsiveConsole::DisplayString.new(self).output(*format)

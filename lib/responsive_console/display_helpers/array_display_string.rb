@@ -4,7 +4,7 @@ module ResponsiveConsole
   module ArrayDisplayString
     include CollectionDisplayString
 
-    TEMPORARY_JOINER = -"\u2342 "
+    TEMPORARY_JOINER = -"\u2342\n"
 
     def element_map
       raw_input.map { |k| yield(k) }

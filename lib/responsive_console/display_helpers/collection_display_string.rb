@@ -13,9 +13,8 @@ module ResponsiveConsole
     def write_object(_element_format = nil, child_format = nil)
       self.default_format = child_format
       raw_elements = capture_separately do
-        write(element_prefix)
         input.each_with_index do |e, i|
-          write(temp_joiner) unless i.zero?
+          i.zero? ? write(element_prefix) : write(temp_joiner)
           yield(e)
         end
       end

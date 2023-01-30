@@ -2,23 +2,35 @@ module ResponsiveConsole
   class Columnizer
     MAX_COLUMNS = 7
     MIN_ELEMENTS = 3
-    # TODO: This is actually appeneded to some lines, so having non-space chars doesn't work as intended
+    # TODO: This is actually appended to some lines, so having non-space chars doesn't work as intended
     COLUMN_JOINER = -'  '
 
     attr_reader :string, :key_option, :display_string
-    delegate :temp_joiner, :joiner, :remaining_width, to: :display_string
+    delegate :temp_joiner, :joiner, :remaining_width, :log_string, to: :display_string
 
     def initialize(str, display_string, **options)
       @display_string = display_string
-      @string = str.split(temp_joiner).join(joiner)
+      log_string { str }
+      # Because the first element seems to already has indentation applied because
+      # of the element_prefix being written
+      first_element, *elements = str.split(temp_joiner)
+      indented_elements = elements.map { |el| el.gsub(/(?<=\n)/, joiner_indent) }
+      @string = [first_element, *indented_elements].join(joiner)
+      log_string { @string }
+
       left_justified = options.fetch(:left_justified, !options[:right_justified])
       @key_option = left_justified ? :- : :+
+    end
+
+    def joiner_indent
+      ' ' * joiner[/(?<=\n).*\z/].to_s.size
     end
 
     def output
       return string if string.lines.size < MIN_ELEMENTS
 
-      rows.map { |row| format(format_string, *row) }.join("\n")
+      log_string(:format_string) { format_string.inspect }
+      rows.map { |row| format(format_string, *row) }.join("\n").tap { |out| log_string { out } }
     end
 
     def max_columns
