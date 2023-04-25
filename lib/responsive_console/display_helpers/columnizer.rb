@@ -35,7 +35,9 @@ module ResponsiveConsole
     end
 
     def rows(cols = column_count)
-      elements = string.lines(chomp: true)
+      # Ruby pre 2.6.3 didn't allow #lines(chomp: true)
+      # elements = string.lines(chomp: true)
+      elements = string.lines.map(&:chomp)
       elements.push('') until elements.size.modulo(cols).zero?
       elements.each_slice(elements.size / cols).to_a.transpose
     end

@@ -19,9 +19,12 @@ module ResponsiveConsole
     def rows
       row_elements = []
       string.split(temp_joiner).slice_before do |el|
-        row_elements.clear if [*row_elements, el].join(joiner).size > remaining_width
-      ensure
-        row_elements.push(el)
+        # Blocks weren't always evaluated in a way that allows ensure without begin
+        begin
+          row_elements.clear if [*row_elements, el].join(joiner).size > remaining_width
+        ensure
+          row_elements.push(el)
+        end
       end
     end
   end

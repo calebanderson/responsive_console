@@ -24,7 +24,9 @@ module ResponsiveConsole
       element.gsub(input_key_regex) do
         match = Regexp.last_match
         char = match[:key_char]&.downcase
-        type = match[:key_char]&.match?(/[A-Z]/) ? :p : :s
+        # Ruby pre 2.4.6 didn't have #match?
+        # type = match[:key_char]&.match?(/[A-Z]/) ? :p : :s
+        type = match[:key_char]&.match(/[A-Z]/) ? :p : :s
         child_element_formats[char] = match[:format]&.to_sym
         key_formats[char] = "%#{match[:args]}<#{char}>#{type}"
       end
@@ -36,7 +38,9 @@ module ResponsiveConsole
       # Using ' % ' as a joiner since it can't be contained in prefix or joiner
       element_prefix = "#{prefix} % #{joiner}"[/(\S.*)(?= % (?m:.*)\k<1>)/].to_s
       parts[:element_prefix] = element_prefix
-      parts[:prefix] = prefix.delete_suffix(element_prefix)
+      # Ruby pre 2.5.5 didn't have delete_suffix
+      # parts[:prefix] = prefix.delete_suffix(element_prefix)
+      parts[:prefix] = prefix.match(/#{element_prefix}\z/).pre_match
     end
 
     def child_element_formats
@@ -48,7 +52,12 @@ module ResponsiveConsole
     end
 
     def parts
-      @parts ||= format_string.match(parts_regex)&.named_captures&.symbolize_keys&.transform_values(&:to_s) || {}
+      # Ruby pre 2.4.6 didn't have MatchData#named_captures
+      # @parts ||= format_string.match(parts_regex)&.named_captures&.symbolize_keys&.transform_values(&:to_s) || {}
+      @parts ||= begin
+        match_data = format_string.match(parts_regex)
+        match_data.nil? ? {} : match_data.names.map { |n| [n.to_sym, match_data[n].to_s] }.to_h
+      end
     end
 
     def key_char_regex
@@ -74,7 +83,7 @@ module ResponsiveConsole
     end
 
     def respond_to_missing?(method)
-      parts&.key?(method)
+      parts&.key?(method) || super
     end
   end
 
