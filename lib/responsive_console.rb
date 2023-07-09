@@ -21,7 +21,11 @@ module ResponsiveConsole
     end
 
     def width_file
-      Pathname.new(File.expand_path('../../.width.txt', __FILE__))
+      if defined?(Rails)
+        Rails.root.join('.width.txt')
+      else
+        Pathname.new(File.expand_path('../../.width.txt', __FILE__))
+      end
     end
 
     def config_width(given_width = nil)
